@@ -2,7 +2,7 @@
   "name": "gulp-multilanguage",
   "version": "1.0.0",
   "description": "Plugin for the ability to build a site with the selected language",
-  "main": "gulpfile.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha test.js"
   },
@@ -16,11 +16,12 @@
     "url": "https://github.com/roschoupkin/gulp-multilanguage/issues"
   },
   "homepage": "https://github.com/roschoupkin/gulp-multilanguage#readme",
-  "dependencies": {
-    "gulp-util": "^3.0.8",
-    "through2": "^2.0.3"
-  },
   "devDependencies": {
-    "mocha": "^5.0.5"
+    "mocha": "^2.4.4"
+  },
+  "dependencies": {
+    "gulp-util": "^3.0.7",
+    "through2": "^2.0.0",
+    "trim-left": "^1.0.1"
   }
 }
