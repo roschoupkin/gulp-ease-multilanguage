@@ -6,7 +6,7 @@ const parsePage = function (str, lang) {
   const substitute = new RegExp('gp\\{\\{([^(?!\\}\\})].[^(?!\\}\\})]*)\\}\\}', 'g');
   return str.replace(substitute, (s, str) => {
     const obj = JSON.parse('{'+str+'}');
-    return obj[lang];
+    return (obj[lang]) ? obj[lang] : '';
   });
 };
 
