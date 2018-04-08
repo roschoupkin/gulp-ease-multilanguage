@@ -10,7 +10,7 @@ const parsePage = function (str, lang) {
   });
 };
 
-module.exports = () => {
+module.exports = (lang) => {
   return through.obj(function(file, enc, cb) {
     if (file.isNull()) {
       cb(null, file);
@@ -23,11 +23,8 @@ module.exports = () => {
     }
 
     try {
-      const data = file.contents.toString()
-        .split('\n')
-        .map((line) => parsePage(line, 'en'))
-        .join('\n');
-      file.contents = new Buffer(data);;
+      const data = parsePage(file.contents.toString(), lang);
+      file.contents = new Buffer(data);
       this.push(file);
     } catch (err) {
       this.emit('error', new PluginError('gulp-ease-multilanguage', err));

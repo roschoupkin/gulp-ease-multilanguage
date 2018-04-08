@@ -6,7 +6,7 @@ const gutil = require('gulp-util');
 const m = require('./');
 
 it('default test', (done) => {
-  const stream = m();
+  const stream = m('en');
 
   stream.on('data', (file) => {
     const fixtures = fs.readFileSync('./test/output.html', 'utf-8');
