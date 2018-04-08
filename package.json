@@ -1,6 +1,6 @@
 {
   "name": "gulp-ease-multilanguage",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Plugin for the ability to build a site with the selected language",
   "main": "index.js",
   "repository": {
