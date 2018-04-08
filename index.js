@@ -2,7 +2,13 @@
 const gutil = require('gulp-util');
 const PluginError = gutil.PluginError;
 const through = require('through2');
-const trimLeft = require('trim-left');
+const parsePage = function (str, lang) {
+  const substitute = new RegExp('gp\\{\\{([^(?!\\}\\})].[^(?!\\}\\})]*)\\}\\}', 'g');
+  return str.replace(substitute, (s, str) => {
+    const obj = JSON.parse('{'+str+'}');
+    return obj[lang];
+  });
+};
 
 module.exports = () => {
   return through.obj(function(file, enc, cb) {
@@ -12,19 +18,19 @@ module.exports = () => {
     }
 
     if (file.isStream()) {
-      cb(new PluginError('gulp-multilanguage', 'Streaming not supported'));
+      cb(new PluginError('gulp-ease-multilanguage', 'Streaming not supported'));
       return;
     }
 
     try {
       const data = file.contents.toString()
-      .split('\n')
-      .map((line) => trimLeft(line))
-      .join('');
-      file.contents = new Buffer(data);
+        .split('\n')
+        .map((line) => parsePage(line, 'en'))
+        .join('\n');
+      file.contents = new Buffer(data);;
       this.push(file);
     } catch (err) {
-      this.emit('error', new PluginError('gulp-multilanguage', err));
+      this.emit('error', new PluginError('gulp-ease-multilanguage', err));
     }
 
     cb();
