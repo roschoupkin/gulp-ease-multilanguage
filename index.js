@@ -23,10 +23,7 @@ module.exports = (lang) => {
     }
 
     try {
-      const data = file.contents.toString()
-        .split('\n')
-        .map((line) => parsePage(line, lang))
-        .join('\n');
+      const data = parsePage(file.contents.toString(), lang);
       file.contents = new Buffer(data);
       this.push(file);
     } catch (err) {
