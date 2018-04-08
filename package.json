@@ -1,27 +1,20 @@
 {
-  "name": "gulp-multilanguage",
+  "name": "gulp-ease-multilanguage",
   "version": "1.0.0",
   "description": "Plugin for the ability to build a site with the selected language",
   "main": "index.js",
-  "scripts": {
-    "test": "mocha test.js"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/roschoupkin/gulp-multilanguage.git"
+    "url": "git+https://github.com/roschoupkin/gulp-ease-multilanguage.git"
   },
   "author": "roschoupkin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/roschoupkin/gulp-multilanguage/issues"
+    "url": "https://github.com/roschoupkin/gulp-ease-multilanguage/issues"
   },
-  "homepage": "https://github.com/roschoupkin/gulp-multilanguage#readme",
-  "devDependencies": {
-    "mocha": "^2.4.4"
-  },
+  "homepage": "https://github.com/roschoupkin/gulp-ease-multilanguage#readme",
   "dependencies": {
     "gulp-util": "^3.0.7",
-    "through2": "^2.0.0",
-    "trim-left": "^1.0.1"
+    "through2": "^2.0.0"
   }
 }

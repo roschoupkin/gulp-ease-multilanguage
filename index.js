@@ -10,7 +10,7 @@ const parsePage = function (str, lang) {
   });
 };
 
-module.exports = () => {
+module.exports = (lang) => {
   return through.obj(function(file, enc, cb) {
     if (file.isNull()) {
       cb(null, file);
@@ -18,19 +18,19 @@ module.exports = () => {
     }
 
     if (file.isStream()) {
-      cb(new PluginError('gulp-multilanguage', 'Streaming not supported'));
+      cb(new PluginError('gulp-ease-multilanguage', 'Streaming not supported'));
       return;
     }
 
     try {
       const data = file.contents.toString()
         .split('\n')
-        .map((line) => parsePage(line, 'en'))
+        .map((line) => parsePage(line, lang))
         .join('\n');
-      file.contents = new Buffer(data);;
+      file.contents = new Buffer(data);
       this.push(file);
     } catch (err) {
-      this.emit('error', new PluginError('gulp-multilanguage', err));
+      this.emit('error', new PluginError('gulp-ease-multilanguage', err));
     }
 
     cb();
