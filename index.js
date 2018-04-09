@@ -2,9 +2,10 @@
 const gutil = require('gulp-util');
 const PluginError = gutil.PluginError;
 const through = require('through2');
-const parsePage = function (str, lang) {
-  const substitute = new RegExp('gp\\{\\{([^(?!\\}\\})].[^(?!\\}\\})]*)\\}\\}', 'g');
-  return str.replace(substitute, (s, str) => {
+const parsePage = function (page, lang) {
+  const substitute = new RegExp('gp\\{\\{(.*)\\}\\}', 'g');
+  return page.replace(substitute, (s, str) => {
+    str = str.replace(new RegExp('\'', 'g'), '\"');
     const obj = JSON.parse('{'+str+'}');
     return (obj[lang]) ? obj[lang] : '';
   });
